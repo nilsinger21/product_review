@@ -8,22 +8,21 @@ import jakarta.persistence.Id;
 @Entity
 public class User {
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long user_id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String username;
 	private String password;
 	private String email;
 	private String firstName;
 	private String lastName;
-	private String role;
 
 	// getters and setters
 	public Long getId() {
-		return user_id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.user_id = id;
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -64,14 +63,6 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 }

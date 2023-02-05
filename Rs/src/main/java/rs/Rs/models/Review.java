@@ -3,20 +3,13 @@ package rs.Rs.models;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Review {
 	@Id
-	// @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long review_id;
-	@Lob
-	private byte[] review_image;
-	//in Controller noch hinzufügen!
+	private Long id;
 	@ManyToOne
 	private Product product;
 	@ManyToOne
@@ -24,14 +17,15 @@ public class Review {
 	private int rating;
 	private String comment;
 	private LocalDateTime date;
+	private String ImageUrl;
 
 	// getters and setters
 	public Long getId() {
-		return review_id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.review_id = id;
+		this.id = id;
 	}
 
 	public Product getProduct() {
@@ -74,12 +68,12 @@ public class Review {
 		this.date = date;
 	}
 
-	public byte[] getImage() {
-		return review_image;
+	public String getImageUrl() {
+		return ImageUrl;
 	}
 
-	public void setImage(byte[] image) {
-		this.review_image = image;
+	public void setImageUrl(String imageUrl) {
+		ImageUrl = imageUrl;
 	}
 
 }
