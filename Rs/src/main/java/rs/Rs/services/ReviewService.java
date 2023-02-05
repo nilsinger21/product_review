@@ -22,13 +22,13 @@ public class ReviewService {
 	public void deleteReview(Long id) {
 		reviewRepository.deleteById(id);
 	}
-	
+
 	public List<Review> getAllReviews() {
-	    return reviewRepository.findAll();
+		return reviewRepository.findAll();
 	}
 
 	public Review getReviewById(Long id) {
-	    return reviewRepository.findById(id).orElse(null);
+		return reviewRepository.findById(id).orElse(null);
 	}
 
 	public List<Review> getReviewsByProductId(Long productId) {
@@ -38,5 +38,10 @@ public class ReviewService {
 	public Review updateReview(Review review) {
 		return reviewRepository.save(review);
 	}
-}
 
+	public byte[] getImageByProductName(Review product) {
+		Review review = ReviewRepository.findByName(product).orElseThrow(() -> new NotFoundException());
+		return review.getImage();
+	}
+
+}

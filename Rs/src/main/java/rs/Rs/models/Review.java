@@ -6,13 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Review {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	// @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long review_id;
+	@Lob
+	private byte[] review_image;
+	//in Controller noch hinzufügen!
 	@ManyToOne
 	private Product product;
 	@ManyToOne
@@ -23,11 +27,11 @@ public class Review {
 
 	// getters and setters
 	public Long getId() {
-		return id;
+		return review_id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.review_id = id;
 	}
 
 	public Product getProduct() {
@@ -68,6 +72,14 @@ public class Review {
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+	public byte[] getImage() {
+		return review_image;
+	}
+
+	public void setImage(byte[] image) {
+		this.review_image = image;
 	}
 
 }

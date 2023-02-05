@@ -2,6 +2,8 @@ package rs.Rs.Controllers;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,12 @@ public class ReviewController {
 	@GetMapping("/{id}")
 	public Review getReviewById(@PathVariable Long id) {
 		return reviewService.getReviewById(id);
+	}
+
+	@GetMapping("/reviews/{id}/image")
+	public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+		byte[] review_image = reviewService.getImageById(id);
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(review_image);
 	}
 
 	@PostMapping

@@ -11,28 +11,28 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Category {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String name;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long category_id;
+	private String category_name;
 	private String description;
 	@OneToMany(mappedBy = "category")
 	private List<Product> products;
 
 	// getters and setters
 	public Long getId() {
-		return id;
+		return category_id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.category_id = id;
 	}
 
 	public String getName() {
-		return name;
+		return category_name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.category_name = name;
 	}
 
 	public String getDescription() {
